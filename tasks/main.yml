@@ -1,6 +1,8 @@
 ---
 # tasks file for ansible-role-contrast/
 
+- include_vars: "secrets/jenkins_access_secrets.yml"
+
 - set_fact: prod_url="https://app.contrastsecurity.com/Contrast/api/engine/default/java"
 
 - name: Create directory for contrast agent
