@@ -1,15 +1,14 @@
 ---
 # tasks file for ansible-role-contrast/
 
-- include_vars: "secrets/jenkins_access_secrets.yml"
+#- include_vars: "secrets/jenkins_access_secrets.yml"
 
-- set_fact: prod_url="https://app.contrastsecurity.com/Contrast/api/engine/default/java"
+#- set_fact: prod_url="https://app.contrastsecurity.com/Contrast/api/engine/default/java"
 
 - name: Create directory for contrast agent
   file: path=/opt/contrast state=directory
   sudo: True
 
 - name: Download java agent from production
-  action: shell curl -v -HAccept:application/json -HAPI-Key:{{ api_key }} -HAuthorization:{{ authorization_key }} {{ prod_url }} > /opt/contrast/contrast.jar
+  action: shell curl -v -HAccept:application/json -HAPI-Key:{{ contrast_api_key }} -HAuthorization:{{ contrast_authorization_key }} {{ contrast_prod_url }} > /opt/contrast/contrast.jar
   sudo: True
-

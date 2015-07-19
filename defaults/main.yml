@@ -1,2 +1,5 @@
 ---
 # defaults file for ansible-role-contrast/
+contrast_api_key:
+contrast_authorization_key:
+contrast_prod_url:
