@@ -14,4 +14,4 @@
   sudo: True
 
 - name: Add to JAVA_OPTS
-  command: export JAVA_OPTS="$JAVA_OPTS -javaagent:{{ contrast_agent_path }}/contrast/contrast.jar"
+  shell: export JAVA_OPTS="$JAVA_OPTS -javaagent:{{ contrast_agent_path }}/contrast/contrast.jar"
