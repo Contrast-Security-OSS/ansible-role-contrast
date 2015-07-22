@@ -6,9 +6,12 @@
 #- set_fact: prod_url="https://app.contrastsecurity.com/Contrast/api/engine/default/java"
 
 - name: Create directory for contrast agent
-  file: path=/opt/contrast state=directory
+  file: path={{ contrast_agent_path }}/contrast state=directory
   sudo: True
 
 - name: Download java agent from production
-  action: shell curl -v -HAccept:application/json -HAPI-Key:{{ contrast_api_key }} -HAuthorization:{{ contrast_authorization_key }} {{ contrast_prod_url }} > /opt/contrast/contrast.jar
+  action: shell curl -v -HAccept:application/json -HAPI-Key:{{ contrast_api_key }} -HAuthorization:{{ contrast_authorization_key }} {{ contrast_prod_url }} > {{ contrast_agent_path }}/contrast/contrast.jar
   sudo: True
+
+- name: Add to JAVA_OPTS
+  command: export JAVA_OPTS="$JAVA_OPTS -Dcontrast.data.dir={{ contrast_agent_path }}/contrast"

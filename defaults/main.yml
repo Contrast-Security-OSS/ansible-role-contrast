@@ -3,3 +3,4 @@
 contrast_api_key:
 contrast_authorization_key:
 contrast_prod_url:
+contrast_agent_path: "/opt"
