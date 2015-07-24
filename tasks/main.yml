@@ -6,7 +6,7 @@
 #- set_fact: prod_url="https://app.contrastsecurity.com/Contrast/api/engine/default/java"
 
 - name: Create directory for contrast agent
-  file: path={{ contrast_agent_path }}/contrast state=directory
+  file: path={{ contrast_agent_path }}/contrast state=directory owner=tomcat group=tomcat
   sudo: True
 
 - name: Download java agent from production
