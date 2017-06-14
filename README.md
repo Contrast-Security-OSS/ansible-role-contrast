@@ -1,4 +1,4 @@
-Role Name
+ansible-role-contrast
 =========
 
 An ansible role to download an agent from Contrast Security TeamServer.
