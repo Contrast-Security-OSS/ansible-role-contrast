@@ -3,9 +3,13 @@
   file: path={{ contrast_agent_path }}/contrast state=directory owner={{ contrast_agent_path_owner }} group={{ contrast_agent_path_group }}
   sudo: True
 
+- name: Create Authorization
+  set_fact:
+    contrast_authorization_key: "{{ contrast_username }}:{{ contrast_service_key }}"
+
 - name: Download Agent from TeamServer
   get_url:
       url: "{{ contrast_teamserver_url }}/Contrast/api/ng/{{ contrast_teamserver_organization }}/agents/default/{{ contrast_agent_type }}"
       dest: "{{ contrast_agent_path }}/contrast/contrast.jar"
-      headers: 'Accept:application/json,API-Key:{{ contrast_api_key }},Authorization:{{ contrast_authorization_key }}'
+      headers: 'Accept:application/json,API-Key:{{ contrast_api_key }},Authorization:{{ contrast_authorization_key | b64encode }}'
   sudo: True
